@@ -2,15 +2,13 @@ name: Extrair Portarias Guarulhos
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 6 * * *'
 
 jobs:
   executar:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do código
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Instalar dependências
@@ -21,8 +19,9 @@ jobs:
         run: |
           python extrair_portarias.py
 
-      - name: Publicar CSV como artefato
+      - name: Publicar CSV
         uses: actions/upload-artifact@v4
         with:
           name: portarias-guarulhos
           path: portarias_garulhos.csv
+``
